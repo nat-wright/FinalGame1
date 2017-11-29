@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\Enemy.cs" />
      <Compile Include="Assets\Scripts\AI\NavMeshAI.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterControl.cs" />
      <Compile Include="Assets\Scripts\Character\CheckPoint.cs" />
