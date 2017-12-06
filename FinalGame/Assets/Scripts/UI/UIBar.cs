@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIBar : MonoBehaviour {
+public class UIBar : MonoBehaviour
+{
 
 	public Image bar;
+    public Text endGameText;
 	public Text coinNum;
 	public int totalCoinValue;
 	public int coinValue = 10;
@@ -17,12 +19,14 @@ public class UIBar : MonoBehaviour {
 	{
 		PowerUp,
 		PowerDown,
-		CollectCoin
+		CollectCoin,
+        Win
 	}
 
 	public PowerUpType powerUp;
 
-	void OnTriggerEnter () {
+	void OnTriggerEnter ()
+    {
 
 		switch (powerUp)
 		{
@@ -37,6 +41,10 @@ public class UIBar : MonoBehaviour {
 			case PowerUpType.CollectCoin:
 				StartCoroutine(CollectCoin());
 			break;
+
+            case PowerUpType.Win:
+                endGameText("You Win!");
+            break;
 		}
 	}
 
@@ -51,7 +59,8 @@ public class UIBar : MonoBehaviour {
 		}
 	}
 
-	IEnumerator PowerUpBar () {
+	IEnumerator PowerUpBar ()
+    {
 		float tempAmount = bar.fillAmount + powerLevel;
 		if (tempAmount > 1)
 		{
@@ -65,7 +74,8 @@ public class UIBar : MonoBehaviour {
 		}
 	}
 
-	IEnumerator PowerDownBar () {
+	IEnumerator PowerDownBar ()
+    {
 		float tempAmount = bar.fillAmount - powerLevel;
 		if (tempAmount <= 0)
 		{
@@ -77,15 +87,23 @@ public class UIBar : MonoBehaviour {
 			bar.fillAmount -= ammountToAdd;
 			yield return new WaitForSeconds(ammountToAdd);
 
-			if(bar.fillAmount == 0) {
+			if(bar.fillAmount == 0)
+            {
 				yield return null;
 			}
 
-			if (bar.fillAmount == 0) {
+			if (bar.fillAmount == 0)
+            {
 				gameOverUI.SetActive(true);
 				CharacterControl.gameOver = true;
+                EndGame("Game Over");
 			}
 		}
-	}
-
+        void EndGame (string _text)
+        {
+            endGameText.text = _text;
+            gameOverUI.SetActive(true);
+            CharacterControl.gameOver = true;
+        }
+    }
 }
