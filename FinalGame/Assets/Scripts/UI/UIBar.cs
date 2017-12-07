@@ -96,8 +96,4 @@ public class UIBar : MonoBehaviour
 			}
 		}
 	}
-	void OnTriggerEnter(Collider key)
-	{
-		endGameText.enabled = true;
-	}
 }
