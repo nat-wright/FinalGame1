@@ -7,7 +7,7 @@ public class UIBar : MonoBehaviour
 {
 
 	public Image bar;
-    public Text endGameText;
+    public GameObject winnerText;
 	public GameObject key;
 	public Text coinNum;
 	public int totalCoinValue;
@@ -21,7 +21,6 @@ public class UIBar : MonoBehaviour
 		PowerUp,
 		PowerDown,
 		CollectCoin,
-        Win
 	}
 
 	public PowerUpType powerUp;
@@ -45,7 +44,16 @@ public class UIBar : MonoBehaviour
 		}
 	}
 
-	IEnumerator CollectCoin () 
+    void OnCollisionEnter(Collision key)
+    {
+        if (bar.fillAmount > 0)
+        {
+            winnerText.SetActive(true);
+            CharacterControl.gameOver = true;
+        }
+    }
+
+    IEnumerator CollectCoin () 
 	{
 		totalCoinValue = int.Parse(coinNum.text);
 		int tempAmount = totalCoinValue + coinValue;
@@ -84,7 +92,7 @@ public class UIBar : MonoBehaviour
 			bar.fillAmount -= ammountToAdd;
 			yield return new WaitForSeconds(ammountToAdd);
 
-			if(bar.fillAmount == 0)
+			if (bar.fillAmount == 0)
             {
 				yield return null;
 			}
