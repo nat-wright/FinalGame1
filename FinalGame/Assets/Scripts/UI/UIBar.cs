@@ -25,6 +25,7 @@ public class UIBar : MonoBehaviour
 
 	public PowerUpType powerUp;
 
+//Starts coroutine for each PowerUpType
 	void OnTriggerEnter ()
     {
 
@@ -44,6 +45,7 @@ public class UIBar : MonoBehaviour
 		}
 	}
 
+//When collided with key, game will end (needs fixing)
     void OnCollisionEnter(Collision key)
     {
         if (bar.fillAmount > 0)
@@ -53,6 +55,7 @@ public class UIBar : MonoBehaviour
         }
     }
 
+//Allows player to collect coins, add coins to coinNum
     IEnumerator CollectCoin () 
 	{
 		totalCoinValue = int.Parse(coinNum.text);
@@ -64,6 +67,7 @@ public class UIBar : MonoBehaviour
 		}
 	}
 
+//Allows player to collect powerups to add to health bar
 	IEnumerator PowerUpBar ()
     {
 		float tempAmount = bar.fillAmount + powerLevel;
@@ -79,6 +83,7 @@ public class UIBar : MonoBehaviour
 		}
 	}
 
+//Allows health to be lowered when player collects powerdowns, if health reaches 0 then the game will end (needs fixing)
 	IEnumerator PowerDownBar ()
     {
 		float tempAmount = bar.fillAmount - powerLevel;
