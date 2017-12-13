@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\AI\NavMeshAI.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterControl.cs" />
      <Compile Include="Assets\Scripts\Character\CheckPoint.cs" />
+     <Compile Include="Assets\Scripts\UI\Key.cs" />
      <Compile Include="Assets\Scripts\UI\ReplayGame.cs" />
      <Compile Include="Assets\Scripts\UI\UIBar.cs" />
  <Reference Include="UnityEngine.UI">

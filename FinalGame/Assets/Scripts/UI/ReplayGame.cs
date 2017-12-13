@@ -11,6 +11,7 @@ public class ReplayGame : MonoBehaviour {
 	public static Vector3 startPosition;
 	private float fillAmount;
 
+
 //Player will start in position
 	void Awake ()
 	{

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class UIBar : MonoBehaviour
 {
 	public Image bar;
-    public GameObject winnerText;
-	public GameObject key;
 	public Text coinNum;
 	public int totalCoinValue;
 	public int coinValue = 10;
@@ -42,17 +40,12 @@ public class UIBar : MonoBehaviour
 				StartCoroutine(CollectCoin());
 			break;
 		}
+		if (bar.fillAmount == 0)
+            {
+				gameOverUI.SetActive(true);
+				CharacterControl.gameOver = true;
+			}
 	}
-
-//When collided with key, game will end (needs fixing)
-    void OnCollisionEnter(Collision key)
-    {
-        if (bar.fillAmount > 0)
-        {
-            winnerText.SetActive(true);
-            CharacterControl.gameOver = true;
-        }
-    }
 
 //Allows player to collect coins, add coins to coinNum
     IEnumerator CollectCoin () 
@@ -99,12 +92,6 @@ public class UIBar : MonoBehaviour
 			if (bar.fillAmount == 0)
             {
 				yield return null;
-			}
-
-			if (bar.fillAmount == 0)
-            {
-				gameOverUI.SetActive(true);
-				CharacterControl.gameOver = true;
 			}
 		}
 	}
