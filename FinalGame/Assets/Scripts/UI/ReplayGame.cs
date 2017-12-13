@@ -11,6 +11,7 @@ public class ReplayGame : MonoBehaviour {
 	public static Vector3 startPosition;
 	private float fillAmount;
 
+//Player will start in position
 	void Awake ()
 	{
 		startPosition = player.position;
@@ -18,6 +19,7 @@ public class ReplayGame : MonoBehaviour {
 		GameOverUI.SetActive(false);
 	}
 	
+//Game Restart
 	public void Click () 
 	{
 		CharacterControl.gameOver = false;

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UIBar : MonoBehaviour
 {
-
 	public Image bar;
     public GameObject winnerText;
 	public GameObject key;
